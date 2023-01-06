@@ -60,5 +60,4 @@ public class UserServiceImpl implements UserService {
         user.setRole("user");
         return user;
     }
-
 }
