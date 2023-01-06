@@ -28,7 +28,7 @@ public class UserServiceImpl implements UserService {
             if (validateSignUpMap(requestMap)) {
                 User user = userDao.findByEmailId(requestMap.get("email"));
                 if (Objects.isNull(user)) {
-                    userDao.save(gteUserFromMap(requestMap));
+                    userDao.save(getUserFromMap(requestMap));
                 } else {
                     return CafeUtils.getResponseEntity("Email already exits.", HttpStatus.BAD_REQUEST);
                 }
@@ -50,7 +50,7 @@ public class UserServiceImpl implements UserService {
         return false;
     }
 
-    private User gteUserFromMap(Map<String, String> requestMap) {
+    private User getUserFromMap(Map<String, String> requestMap) {
         User user = new User();
         user.setName(requestMap.get("name"));
         user.setContactNumber(requestMap.get("contactNumber"));
